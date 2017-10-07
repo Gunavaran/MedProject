@@ -229,19 +229,22 @@
                 </div>
 
                 <div>
-                    <div class="card-box">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="p-20">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-box">
                                     <h4 class="header-title m-t-0">Hospital Detail</h4>
                                     <h5>Location: </h5><?php echo '<p>'.$location.'</p>'; ?>
                                     <h5>Closed Days: </h5><?php if($days_closed==null){echo '<p class="text-danger">'."Available All Days".'</p>';}else {echo $days_closed;} ?>
                                     <h5>Type: </h5><?php echo '<p>'.$type.'</p>'; ?>
                                     <h5>Ambulance Service: </h5><?php echo '<p>'.$ambulance.'</p>'; ?>
                                     <h5>Special Features: </h5><?php echo '<p>'.$features.'</p>'; ?>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                        <div class="card-box ribbon-box">
+                            <div class="ribbon ribbon-custom">Rate Us</div>
+                            <p class="m-b-0">
                                 <div class="col-sm-4">
-                                    <h4 class="header-title m-t-0">Rate Hospital</h4>
                                     <h5>Facility</h5>
                                     <div id="default"></div>
                                 </div>
@@ -253,8 +256,142 @@
                                     <h5>Customer Service</h5>
                                     <div id="score"></div>
                                 </div>
+                            </p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-box">
+                        <div class="row">
+                            <div class="col-12">
+
+                                    <h5 class="m-t-0 header-title"><b>Doctors Schedule</b></h5>
+
+                                    <div class="table-responsive">
+                                        <table class="table m-0 table-colored table-primary table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>Doctor</th>
+                                                <th>Monday</th>
+                                                <th>Tuesday</th>
+                                                <th>Wednesday</th>
+                                                <th>Thursday</th>
+                                                <th>Friday</th>
+                                                <th>Saturday</th>
+                                                <th>Sunday</th>
+                                            </tr>
+                                            </thead>
+                                            <?php
+                                            $query_doctors = "SELECT name,category,day,start_time,end_time FROM doc_schedule,doctor where doc_schedule.hospital=\"Durdans Hospital, Colombo\" and doc_schedule.doctor_ID=doctor.doctor_ID";
+                                            $query_doctors_run = mysqli_query($link, $query_doctors);
+
+                                            while ($query_doctors_row = mysqli_fetch_assoc($query_doctors_run)){
+                                                $name = $query_doctors_row['name'];
+                                                $category=$query_doctors_row['category'];
+                                                $day = $query_doctors_row['day'];
+                                                $start_time = $query_doctors_row['start_time'];
+                                                $end_time= $query_doctors_row['end_time'];
+                                                ?>
+                                                <tbody>
+                                                <?php if ($day=="Monday"){
+                                                    ?>
+                                                <tr>
+                                                    <td><?php echo $name,", ", $category; ?></td>
+                                                    <td><?php echo $start_time," - ",$end_time; ?></td>
+                                                    <td><?php echo "-"; ?></td>
+                                                    <td><?php echo "-"; ?></td>
+                                                    <td><?php echo "-";?></td>
+                                                    <td><?php echo "-"; ?></td>
+                                                    <td><?php echo "-"; ?></td>
+                                                    <td><?php echo "-"; ?></td>
+                                                </tr>
+                                                <?php }else if($day=="Tuesday"){
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $name, $category; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo $start_time," - ",$end_time; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-";?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                    </tr>
+                                                <?php }else if($day=="Wednesday"){
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $name, $category; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-" ?></td>
+                                                        <td><?php echo $start_time," - ",$end_time; ?></td>
+                                                        <td><?php echo "-";?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                    </tr>
+                                                <?php }else if($day=="Thursday"){
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $name, $category; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-" ;?></td>
+                                                        <td><?php echo $start_time," - ",$end_time;?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                    </tr>
+                                                <?php }else if($day=="Friday"){
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $name, $category; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-" ;?></td>
+                                                        <td><?php echo "-";?></td>
+                                                        <td><?php echo $start_time," - ",$end_time; ?></td>
+                                                        <td><?php echo "-" ;?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                    </tr>
+                                                <?php }else if($day=="Saturday"){
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $name, $category; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-";?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo $start_time," - ",$end_time; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                    </tr>
+                                                <?php }else if($day=="Sunday"){
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $name, $category; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-";?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo "-"; ?></td>
+                                                        <td><?php echo $start_time," - ",$end_time; ?></td>
+                                                    </tr>
+                                                <?php
+                                                }?>
+                                                </tbody>
+
+
+                                                <?php
+                                            }
+
+                                            ?>
+
+                                        </table>
+
+                                    </div>
+
                             </div>
-                        </div><!-- end row -->
+                        </div> <!-- end row -->
                     </div> <!-- end card-box -->
                 </div>
             </div> <!-- container -->
