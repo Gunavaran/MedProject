@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="Admin/Bootstrap_4_alpha6-Versions/default/assets/images/top_mycare.png">
 
     <!-- C3 charts css -->
-    <link href="../plugins/c3/c3.min.css" rel="stylesheet" type="text/css"  />
+    <link href="Admin/Bootstrap_4_alpha6-Versions/plugins/c3/c3.min.css" rel="stylesheet" type="text/css"  />
 
     <!-- App css -->
     <link href="Admin/Bootstrap_4_alpha6-Versions/default/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -35,7 +35,7 @@
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="index.php" class="logo">
+            <a href="index_doctor.php" class="logo">
                                 <span>
                                     <img src="Admin/Bootstrap_4_alpha6-Versions/default/assets/images/mycare.png" alt="" height="55" width="200">
                                 </span>
@@ -157,9 +157,28 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="javascript: void(0);"><i class="fi-target"></i> <span> Patients </span> <span class="menu-arrow"></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+
+                            <?php
+                            include 'Connect.php';
+                            $query_patientID = "SELECT patient_ID FROM patient where patient_ID in (SELECT patient_ID from doc_pat where doctor_ID ='200001')";
+                            $query_patientID_run = mysqli_query($link, $query_patientID);
+                            while ($query_patientID_row = mysqli_fetch_assoc($query_patientID_run)){
+                                ?>
+                                <li><a href="admin-grid.html"><?php echo $query_patientID_row['patient_ID'] ?></a></li>
+
+                            <?php
+                            }
+                            ?>
+
+
+                        </ul>
+                    </li>
 
                     <li>
-                        <a href="taskboard.html"><i class="fi-paper"></i> <span> Task Board </span></a>
+                        <a href="taskboard.html"><i class="fi-paper"></i> <span> More </span></a>
                     </li>
 
                 </ul>
@@ -194,8 +213,26 @@
                     </div>
                 </div>
                 <!-- end row -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box">
 
+                            <?php
+                            $query_rating = "SELECT rating FROM doc_rating WHERE doctor_ID = '200001'";
+                            $query_rating_run = mysqli_query($link, $query_rating);
+                            $rating = 0;
+                            $count = 0;
+                            while ($query_rating_row = mysqli_fetch_assoc($query_rating_run)) {
+                                $value = $query_rating_row['rating'];
+                                $count++;
+                                $rating += $value;
+                            }
+                            ?>
+                            <h4 style="color:red;"> Current Rating &nbsp &nbsp &nbsp  <?php echo ($rating / $count) * 20 ?> %</h4>
 
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
@@ -207,6 +244,7 @@
                                     <tr>
                                         <th>Patient_ID</th>
                                         <th>Name</th>
+                                        <th>NIC</th>
                                         <th>Date of Birth</th>
                                         <th>Address</th>
                                         <th>e-mail</th>
@@ -217,13 +255,14 @@
                                     </tr>
                                     </thead>
                                     <?php
-                                        include 'Connect.php';
+
                                         $query_patients = "SELECT * FROM patient where patient_ID in (SELECT patient_ID from doc_pat where doctor_ID ='200001')";
                                         $query_patients_run = mysqli_query($link, $query_patients);
 
                                         while ($query_patients_row = mysqli_fetch_assoc($query_patients_run)){
                                             $id = $query_patients_row['patient_ID'];
                                             $name = $query_patients_row['name'];
+                                            $nic = $query_patients_row['NIC'];
                                             $dob = $query_patients_row['date_of_birth'];
                                             $address = $query_patients_row['address'];
                                             $email = $query_patients_row['email'];
@@ -235,6 +274,7 @@
                                             <tr>
                                                 <td><?php echo $id ?></td>
                                                 <td><?php echo $name ?></td>
+                                                <td><?php echo $nic ?></td>
                                                 <td><?php echo $dob ?></td>
                                                 <td><?php echo $address ?></td>
                                                 <td><?php echo $email ?></td>
@@ -263,7 +303,7 @@
         </div> <!-- content -->
 
         <footer class="footer text-right">
-            2017 © Adminox. - Coderthemes.com
+            2017 © TEAM HOPE
         </footer>
 
     </div>
@@ -304,6 +344,8 @@
 <!-- App js -->
 <script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.core.js"></script>
 <script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.app.js"></script>
+
+<script src="Admin/Bootstrap_4_alpha6-Versions/plugins/raty-fa/jquery.raty-fa.js"></script>
 
 </body>
 </html>
