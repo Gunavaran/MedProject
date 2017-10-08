@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Adminox - Responsive Web App Kit</title>
+    <title>Futura MyCare</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="../../../Admin/Bootstrap_4_alpha6-Versions/default/assets/images/top_mycare.png">
 
     <!-- App css -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -32,12 +32,12 @@
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="index.html" class="logo">
+            <a href="index_patient.php" class="logo">
                                 <span>
-                                    <img src="assets/images/logo.png" alt="" height="25">
+                                    <img src="../../../Admin/Bootstrap_4_alpha6-Versions/default/assets/images/mycare.png" alt="" height="55" width="200">
                                 </span>
                 <i>
-                    <img src="assets/images/logo_sm.png" alt="" height="28">
+                    <img src="../../../Admin/Bootstrap_4_alpha6-Versions/default/assets/images/logo_sm.png" alt="" height="28">
                 </i>
             </a>
         </div>
@@ -142,6 +142,11 @@
                 <!-- Left Menu Start -->
                 <ul class="metismenu" id="side-menu">
                     <li class="menu-title">Navigation</li>
+                    <li>
+                        <a href="index_patient.php">
+                            <i class="fi-air-play"></i><span> Dashboard </span>
+                        </a>
+                    </li>
                     <li>
                         <a href="javascript: void(0);"><i class="fi-target"></i> <span> Search </span> <span class="menu-arrow"></span></a>
                         <ul class="nav-second-level" aria-expanded="false">
@@ -344,26 +349,6 @@
                             <div id="website-stats" style="height: 320px;" class="flot-chart m-t-30"></div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0">Cholesterol Level</h4>
-                            <div id="pie-chart">
-                                <div id="morris-area-with-dotted" style="height: 320px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0">Pressure</h4>
-                            <div id="website-stats" style="height: 320px;" class="flot-chart m-t-30"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0">Weight</h4>
-                            <div id="website-stats" style="height: 320px;" class="flot-chart m-t-30"></div>
-                        </div>
-                    </div>
                 </div>
                 <!-- end row -->
 
@@ -372,7 +357,7 @@
         </div> <!-- content -->
 
         <footer class="footer text-right">
-            2017 © Adminox. - Coderthemes.com
+            2017 © TEAM HOPE
         </footer>
 
     </div>
