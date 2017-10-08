@@ -31,7 +31,7 @@
 <div id="wrapper">
 
     <!-- Top Bar Start -->
-    <div class="topbar">
+    <div class="topbar"  >
 
         <!-- LOGO -->
         <div class="topbar-left">
@@ -45,7 +45,7 @@
             </a>
         </div>
 
-        <nav class="navbar-custom">
+        <nav class="navbar-custom" >
 
             <ul class="list-inline float-right mb-0">
                 <li class="list-inline-item dropdown notification-list">
