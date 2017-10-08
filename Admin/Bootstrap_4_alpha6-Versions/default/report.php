@@ -199,173 +199,40 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title float-left">Personal Detail</h4>
+                            <h4 class="page-title float-left">Report</h4>
                             <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
-
+                <!-- end row -->
                 <div>
-                    <div class="row">
-                            <?php
-                            $host = 'localhost';
-                            $username = 'root';
-                            $password = '';
-                            $database = 'med';
+                    <div class="card-box">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="p-20">
+                                    <form action="report.php" method="get" class="form-horizontal" name="fixedform">
+                                        <label class="col-2 col-form-label">Enter your repport: </label>
+                                        <div class="col-10">
+                                            <textarea class="form-control" rows="5"></textarea><br>
+                                            <input type="submit" value="Submit">
+                                        </div>
+                                    </form>
 
-                            $link = mysqli_connect($host,$username,$password,$database) or die ("could not connect");
-                            if ($link || mysqli_select_db($link,$database)){
-                                //echo "Connection successful;";
-                            } else {
-                                $message = "connection failed";
-                            }
-                            $query = "SELECT height,blood_group FROM patient WHERE patient_ID=100001";
-                            $query_run = mysqli_query($link,$query);
-                            if (mysqli_num_rows($query_run) > 0) {
-                                $query_row = mysqli_fetch_assoc($query_run);
-                                extract($query_row);
-                                    ?>
-                                <div class="col-lg-4">
-                                    <div class="card-box ribbon-box">
-                                        <div class="ribbon ribbon-custom">Data</div>
-                                        <p class="m-b-0">
-                                            <?php
-                                            echo "Height: ", $query_row['height'].'<br>';
-                                            echo "Blood Group: ", $query_row['blood_group'];
-                                            ?>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <?php
-                            }
-
-                            $query = "SELECT value, category FROM patient_history WHERE patient_ID=100001";
-                            $query_run = mysqli_query($link,$query);
-                            $anomaly=array();
-                            $allergy=array();
-                            $medication=array();
-                            $surgical_history=array();
-                            while ($query_row= mysqli_fetch_assoc($query_run)) {
-                                if ($query_row["category"]=='allergy'){
-                                    array_push($allergy,$query_row["value"]);
-                                }
-                                if($query_row["category"]=='medication'){
-                                    array_push($medication,$query_row["value"]);
-                                }
-                                if($query_row["category"]=='surgical_history'){
-                                    array_push($surgical_history,$query_row["value"]);
-                                }
-                                if($query_row["category"]=='anomaly'){
-                                    array_push($anomaly,$query_row["value"]);
-                                }
-                            }
-
-                            if ($anomaly!=[]){?>
-                        <div class="col-lg-4">
-                            <div class="card-box ribbon-box">
-                                <div class="ribbon ribbon-custom">Anomaly</div>
-                                <p class="m-b-0">
                                     <?php
-                                        foreach ($anomaly as $i){
-                                            echo "$i.<br>";
-                                        }
+                                    include '../../../connect.php';
+
+                                    if (isset($_GET['Find'])) {
+                                        $find = $_GET['Find'];
+                                    }
                                     ?>
-                                </p>
-                            </div>
-                        </div>
-                        <?php
-                        }
-                            if ($allergy!=[]){?>
-                                <div class="col-lg-4">
-                                    <div class="card-box ribbon-box">
-                                        <div class="ribbon ribbon-custom">Allergy</div>
-                                        <p class="m-b-0">
-                                            <?php
-                                            foreach ($allergy as $i){
-                                                echo "$i.<br>";
-                                            }
-                                            ?>
-                                        </p>
-                                    </div>
                                 </div>
-                                <?php
-                            }
-
-                            if ($surgical_history!=[]){?>
-                                <div class="col-lg-4">
-                                    <div class="card-box ribbon-box">
-                                        <div class="ribbon ribbon-custom">Surgical History</div>
-                                        <p class="m-b-0">
-                                            <?php
-                                            foreach ($surgical_history as $i){
-                                                echo "$i.<br>";
-                                            }
-                                            ?>
-                                        </p>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-
-                            if ($medication!=[]){?>
-                                <div class="col-lg-4">
-                                    <div class="card-box ribbon-box">
-                                        <div class="ribbon ribbon-custom">Medication</div>
-                                        <p class="m-b-0">
-                                            <?php
-                                            foreach ($medication as $i){
-                                                echo "$i.<br>";
-                                            }
-                                            ?>
-                                        </p>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                        ?>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title float-left">Testing Results</h4>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0">Sugar Level</h4>
-                            <div id="website-stats" style="height: 320px;" class="flot-chart m-t-30"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0">Cholesterol Level</h4>
-                            <div id="pie-chart">
-                                <div id="morris-area-with-dotted" style="height: 320px;"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0">Pressure</h4>
-                            <div id="website-stats" style="height: 320px;" class="flot-chart m-t-30"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0">Weight</h4>
-                            <div id="website-stats" style="height: 320px;" class="flot-chart m-t-30"></div>
-                        </div>
-                    </div>
+
                 </div>
-                <!-- end row -->
+
+
 
             </div> <!-- container -->
 
@@ -385,6 +252,8 @@
 
 </div>
 <!-- END wrapper -->
+
+
 
 <!-- jQuery  -->
 <script src="assets/js/jquery.min.js"></script>
@@ -407,23 +276,6 @@
 <script src="../plugins/flot-chart/curvedLines.js"></script>
 <script src="../plugins/flot-chart/jquery.flot.axislabels.js"></script>
 <script src="assets/pages/jquery.flot.init.js"></script>
-
-<!-- App js -->
-<script src="assets/js/jquery.core.js"></script>
-<script src="assets/js/jquery.app.js"></script>
-
-<!-- jQuery  -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/tether.min.js"></script><!-- Tether for Bootstrap -->
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/metisMenu.min.js"></script>
-<script src="assets/js/waves.js"></script>
-<script src="assets/js/jquery.slimscroll.js"></script>
-
-<!--Morris Chart-->
-<script src="../plugins/morris/morris.min.js"></script>
-<script src="../plugins/raphael/raphael-min.js"></script>
-<script src="assets/pages/jquery.morris.init.js"></script>
 
 <!-- App js -->
 <script src="assets/js/jquery.core.js"></script>
