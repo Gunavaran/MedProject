@@ -9,18 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="Admin/Bootstrap_4_alpha6-Versions/default/assets/images/top_mycare.png">
+    <link rel="shortcut icon" href="mycare.png">
 
     <!-- C3 charts css -->
     <link href="Admin/Bootstrap_4_alpha6-Versions/plugins/c3/c3.min.css" rel="stylesheet" type="text/css"  />
 
     <!-- App css -->
-    <link href="Admin/Bootstrap_4_alpha6-Versions/default/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="Admin/Bootstrap_4_alpha6-Versions/default/assets/css/icons.css" rel="stylesheet" type="text/css" />
-    <link href="Admin/Bootstrap_4_alpha6-Versions/default/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
-    <link href="Admin/Bootstrap_4_alpha6-Versions/default/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../Admin/Bootstrap_4_alpha6-Versions/default/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Admin/Bootstrap_4_alpha6-Versions/default/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="../Admin/Bootstrap_4_alpha6-Versions/default/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Admin/Bootstrap_4_alpha6-Versions/default/assets/css/style.css" rel="stylesheet" type="text/css" />
 
-    <script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/modernizr.min.js"></script>
+    <script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/modernizr.min.js"></script>
 
 </head>
 
@@ -35,12 +35,12 @@
 
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="index_doctor.php" class="logo">
+            <a href="../index_doctor.php" class="logo">
                                 <span>
-                                    <img src="Admin/Bootstrap_4_alpha6-Versions/default/assets/images/mycare.png" alt="" height="55" width="200">
+                                    <img src="mycare.png" alt="" height="55" width="200">
                                 </span>
                 <i>
-                    <img src="Admin/Bootstrap_4_alpha6-Versions/default/assets/images/logo_sm.png" alt="" height="28">
+                    <img src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/images/logo_sm.png" alt="" height="28">
                 </i>
             </a>
         </div>
@@ -89,7 +89,7 @@
                 <li class="list-inline-item dropdown notification-list">
                     <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="false" aria-expanded="false">
-                        <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                        <img src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
                         <!-- item-->
@@ -237,7 +237,7 @@
                                     </thead>
                                     <?php
 
-                                    include 'connect.php';
+                                    include 'Connect.php';
 
                                     if (isset($_POST['Find'])) {
                                         $find = $_POST['Find'];
@@ -305,12 +305,12 @@
 
 
 <!-- jQuery  -->
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.min.js"></script>
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/tether.min.js"></script><!-- Tether for Bootstrap -->
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/bootstrap.min.js"></script>
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/metisMenu.min.js"></script>
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/waves.js"></script>
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.slimscroll.js"></script>
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.min.js"></script>
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/tether.min.js"></script><!-- Tether for Bootstrap -->
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/bootstrap.min.js"></script>
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/metisMenu.min.js"></script>
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/waves.js"></script>
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.slimscroll.js"></script>
 
 <!-- Counter js  -->
 <script src="../plugins/waypoints/jquery.waypoints.min.js"></script>
@@ -324,11 +324,11 @@
 <script src="../plugins/echart/echarts-all.js"></script>
 
 <!-- Dashboard init -->
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/pages/jquery.dashboard.js"></script>
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/pages/jquery.dashboard.js"></script>
 
 <!-- App js -->
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.core.js"></script>
-<script src="Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.app.js"></script>
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.core.js"></script>
+<script src="../Admin/Bootstrap_4_alpha6-Versions/default/assets/js/jquery.app.js"></script>
 
 <script src="Admin/Bootstrap_4_alpha6-Versions/plugins/raty-fa/jquery.raty-fa.js"></script>
 
