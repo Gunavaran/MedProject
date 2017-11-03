@@ -224,7 +224,7 @@
                             } else {
                                 $message = "connection failed";
                             }
-                            $query = "SELECT height,blood_group FROM patient WHERE patient_ID=100001";
+                            $query = "SELECT height,blood_group FROM patient WHERE patient_ID='100001'";
                             $query_run = mysqli_query($link,$query);
                             if (mysqli_num_rows($query_run) > 0) {
                                 $query_row = mysqli_fetch_assoc($query_run);
